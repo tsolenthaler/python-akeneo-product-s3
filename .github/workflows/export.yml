@@ -35,6 +35,8 @@ jobs:
         run: pip install boto3
       - name: Install requests
         run: pip install requests
+      - name: Install oauthlib
+        run: pip install oauthlib
       - name: Install Akeneo
         run: pip install -i https://test.pypi.org/simple/ akeneo
       - name: Run Script - Export
