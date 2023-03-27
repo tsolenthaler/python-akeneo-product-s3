@@ -28,12 +28,11 @@ def getProductFromAkeneo():
     return product
 
 def __main__():
-    print("Start Import to Algolia")
+    print("Start Export")
     print(f"Arguments count: {len(sys.argv)}")
     for i, arg in enumerate(sys.argv):
         print(f"Argument {i:>6}: {arg}")
     product = getProductFromAkeneo()
-    print(product)
     dictToS3(product, S3_BUCKET, S3_OBJECT_EXPORT_PATH)
 
 if __name__== "__main__":
