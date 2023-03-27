@@ -33,6 +33,8 @@ jobs:
         run: pip install python-dotenv
       - name: Install boto3
         run: pip install boto3
+      - name: Install Akeneo
+        run: pip install -i https://test.pypi.org/simple/ akeneo
       - name: Run Script - Export
         working-directory: ./src
         run: python run.py
