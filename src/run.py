@@ -24,7 +24,8 @@ S3_OBJECT_EXPORT_PATH = getenv('S3_OBJECT_EXPORT_PATH')
 ## Exract Data from Akeneo
 def getProductFromAkeneo():
     client = akeneo.Akeneo(AKENEO_HOST, AKENEO_CLIENT_ID, AKENEO_CLIENT_SECRET, AKENEO_USERNAME, AKENEO_PASSWORD)
-    product = client.getProductByCode(AKENEO_GET_PRODUCT_QUERY)
+    #product = client.getProductByCode(AKENEO_GET_PRODUCT_QUERY)
+    product = client.getProducts()
     return product
 
 def __main__():
