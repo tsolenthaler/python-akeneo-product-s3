@@ -40,6 +40,7 @@ def __main__():
     
     # Load
     dictToS3(product, S3_BUCKET, S3_OBJECT_EXPORT_PATH)
+    print("Export Done")
 
 if __name__== "__main__":
     __main__()
