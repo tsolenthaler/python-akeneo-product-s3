@@ -19,7 +19,7 @@ S3_BUCKET = getenv('S3_BUCKET')
 S3_REGION = getenv('S3_REGION')
 S3_ACCESS_KEY = getenv('S3_ACCESS_KEY')
 S3_SECRET_ACCESS_KEY = getenv('S3_SECRET_ACCESS_KEY')
-S3_OBJECT_EXPORT_PATH = getenv('S3_OBJECT_EXPORT_PATH')
+S3_OBJECT_EXPORT_INDEX_PATH = getenv('S3_OBJECT_EXPORT_INDEX_PATH')
 
 ## Exract Data from Akeneo
 def getProductFromAkeneo():
@@ -39,7 +39,7 @@ def __main__():
     # none
     
     # Load
-    dictToS3(product, S3_BUCKET, S3_OBJECT_EXPORT_PATH)
+    dictToS3(product, S3_BUCKET, S3_OBJECT_EXPORT_INDEX_PATH)
     print("Export Done")
 
 if __name__== "__main__":
