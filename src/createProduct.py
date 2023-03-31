@@ -22,15 +22,7 @@ def createProduct(products):
     print("Create Product")
     product = {}
     for product in products:
-        product[product['identifier']] = product
-        dictToS3(product, S3_BUCKET, S3_OBJECT_PRODUCT_PATH+"/"+product['identifier']+"id.json")
-
-def createIdIndex(products):
-    print("Create Index")
-    index = {}
-    for product in products:
-        index[product['identifier']] = product
-    return index
+        dictToS3(product, S3_BUCKET, S3_OBJECT_PRODUCT_PATH+product['identifier']+".json")
 
 def __main__():
     print("Start Create Index")
