@@ -25,8 +25,8 @@ S3_OBJECT_CONFIG_ATTRIBUTES_INDEX = getenv('S3_OBJECT_CONFIG_ATTRIBUTES_INDEX')
 def getAttributesFromAkeneo():
     client = akeneo.Akeneo(AKENEO_HOST, AKENEO_CLIENT_ID, AKENEO_CLIENT_SECRET, AKENEO_USERNAME, AKENEO_PASSWORD)
     #product = client.getProductByCode(AKENEO_GET_PRODUCT_QUERY)
-    attriebutes = client.getAttributes()
-    return attriebutes
+    attributes = client.getAttributes()
+    return attributes
 
 def createAttribute(attriebutes):
     print("Create Attribute")
