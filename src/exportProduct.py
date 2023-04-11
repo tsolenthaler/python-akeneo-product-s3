@@ -20,6 +20,7 @@ S3_REGION = getenv('S3_REGION')
 S3_ACCESS_KEY = getenv('S3_ACCESS_KEY')
 S3_SECRET_ACCESS_KEY = getenv('S3_SECRET_ACCESS_KEY')
 S3_OBJECT_PRODUCTS_INDEX = getenv('S3_OBJECT_PRODUCTS_INDEX')
+S3_OBJECT_PRODUCT_PATH = getenv('S3_OBJECT_PRODUCT_PATH')
 
 ## Exract Data from Akeneo
 def getProductFromAkeneo():
@@ -27,6 +28,12 @@ def getProductFromAkeneo():
     #product = client.getProductByCode(AKENEO_GET_PRODUCT_QUERY)
     product = client.getProducts()
     return product
+
+def createProduct(products):
+    print("Create Product")
+    product = {}
+    for product in products:
+        dictToS3(product, S3_BUCKET, S3_OBJECT_PRODUCT_PATH+product['identifier']+".json")
 
 def __main__():
     print("Start Export")
@@ -39,6 +46,7 @@ def __main__():
     # none
     
     # Load
+    createProduct(product)
     dictToS3(product, S3_BUCKET, S3_OBJECT_PRODUCTS_INDEX)
     print("Export Done")
 
