@@ -46,8 +46,8 @@ def __main__():
     # none
     
     # Load
-    createProduct(product)
     dictToS3(product, S3_BUCKET, S3_OBJECT_PRODUCTS_INDEX)
+    createProduct(product)
     print("Export Done")
 
 if __name__== "__main__":
