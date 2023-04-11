@@ -18,22 +18,22 @@ S3_ENDPOINT = getenv('S3_ENDPOINT')
 S3_BUCKET = getenv('S3_BUCKET')
 S3_REGION = getenv('S3_REGION')
 S3_ACCESS_KEY = getenv('S3_ACCESS_KEY')
-S3_OBJECT_CONFIG_ATTRIBUTES_PATH = getenv('S3_OBJECT_CONFIG_ATTRIBUTES_PATH')
-S3_OBJECT_CONFIG_ATTRIBUTES_INDEX = getenv('S3_OBJECT_CONFIG_ATTRIBUTES_INDEX')
+S3_OBJECT_CONFIG_CATEGORIES_PATH = getenv('S3_OBJECT_CONFIG_CATEGORIES_PATH')
+S3_OBJECT_CONFIG_CATEGORIES_INDEX = getenv('S3_OBJECT_CONFIG_CATEGORIES_INDEX')
 
 ## Exract Data from Akeneo
-def getAttributesFromAkeneo():
+def getCategoriesFromAkeneo():
     client = akeneo.Akeneo(AKENEO_HOST, AKENEO_CLIENT_ID, AKENEO_CLIENT_SECRET, AKENEO_USERNAME, AKENEO_PASSWORD)
     #product = client.getProductByCode(AKENEO_GET_PRODUCT_QUERY)
-    attributes = client.getAttributes()
-    return attributes
+    categories = client.getCategories()
+    return categories
 
-def createAttribute(attriebutes):
-    print("Create Attribute")
-    for attribute in attriebutes:
-        attribute.pop('_links')
-        print(attribute['code'])
-        dictToS3(attribute, S3_BUCKET, S3_OBJECT_CONFIG_ATTRIBUTES_PATH+attribute['code']+".json")
+def createCategories(categories):
+    print("Create Category")
+    for category in categories:
+        category.pop('_links')
+        print(category['code'])
+        dictToS3(category, S3_BUCKET, S3_OBJECT_CONFIG_CATEGORIES_PATH+category['code']+".json")
 
 def __main__():
     print("Start Export")
@@ -41,14 +41,14 @@ def __main__():
     for i, arg in enumerate(sys.argv):
         print(f"Argument {i:>6}: {arg}")
     # Extract
-    attriebutes = getAttributesFromAkeneo()
+    categories = getCategoriesFromAkeneo()
     # Transform
     # Remove _links
-    print(attriebutes)
+    print(categories)
     
     # Load
-    dictToS3(attriebutes, S3_BUCKET, S3_OBJECT_CONFIG_ATTRIBUTES_INDEX)
-    createAttribute(attriebutes)
+    dictToS3(categories, S3_BUCKET, S3_OBJECT_CONFIG_CATEGORIES_INDEX)
+    createCategories(categories)
     print("Export Done")
 
 if __name__== "__main__":
