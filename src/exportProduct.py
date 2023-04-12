@@ -47,6 +47,7 @@ def __main__():
     # none
     
     # Load
+    print("Create Product Index")
     dictToS3(product, S3_BUCKET, S3_OBJECT_PRODUCTS_INDEX)
     createProduct(product)
     print("Export Done")
