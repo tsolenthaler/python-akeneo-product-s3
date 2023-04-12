@@ -33,6 +33,7 @@ def createProduct(products):
     print("Create Product")
     product = {}
     for product in products:
+        print(product['identifier'])
         dictToS3(product, S3_BUCKET, S3_OBJECT_PRODUCT_PATH+product['identifier']+".json")
 
 def __main__():
